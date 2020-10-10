@@ -1,10 +1,9 @@
-# panel-administrator
+# panel-administrator (линчый кабинет)
 
 # О проекте:
-
 Симулятор личного кабинета, с функциями: <br>
 <ul>
- <li>Конвигурирование списка услуг </<li>
+ <li>Конфигурирование списка услуг </<li>
  <li>Просмотр истории действий </<li>
 </ul>
 
@@ -12,7 +11,6 @@
  https://code-rnd.github.io/panel-administrator/
 
 # Под капотом
-
 Проект собран на create react app
 <ul>
   <li><code>+ typescript</code></li>
