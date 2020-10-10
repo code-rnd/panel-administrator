@@ -9,7 +9,7 @@
 </ul>
 
 # Демо проекта
- https://code-rnd.github.io/anel-administrator/
+ https://code-rnd.github.io/panel-administrator/
 
 # Под капотом
 
