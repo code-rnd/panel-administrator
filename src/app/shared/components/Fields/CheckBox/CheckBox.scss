@@ -1,0 +1,15 @@
+.fieldCheckBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-bottom: 10px;
+
+  input[type="checkbox"] {
+    cursor: pointer;
+
+    font-size: 16px;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+}

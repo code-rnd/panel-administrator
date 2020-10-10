@@ -1,0 +1,69 @@
+@import "src/app/shared/style/style.const";
+@import "src/app/shared/style/style.classes";
+
+.button {
+  cursor: pointer;
+
+  min-width: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px;
+  margin-left: 15px;
+  box-sizing: border-box;
+
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  transition: all 0.5s;
+
+  &__success {
+    border: $border $color-success;
+
+    &:hover {
+      background-color: $color-success;
+      color: white;
+      transition: all 0.5s;
+    }
+  }
+
+  &__default {
+    border: $border $color-default;
+
+    &:hover {
+      background-color: $color-default;
+      color: white;
+      transition: all 0.5s;
+    }
+  }
+
+  &__error {
+    border: $border $color-error;
+
+    &:hover {
+      background-color: $color-error;
+      color: white;
+      transition: all 0.5s;
+    }
+  }
+
+  &__active {
+    background-color: $color-default;
+    color: white;
+  }
+
+  &__disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  &__visible {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__loading {
+    @extend .animate;
+  }
+}

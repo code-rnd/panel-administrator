@@ -1,0 +1,16 @@
+@import "src/app/shared/style/style.const";
+
+.page-header {
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px $global-padding 10px $global-padding;
+
+  &-navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

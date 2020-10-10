@@ -1,0 +1,27 @@
+@import "src/app/shared/style/style.const";
+@import "src/app/shared/style/style.classes";
+
+.notification {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: $global-padding/2 ($global-padding * 1.5) $global-padding/2
+    $global-padding * 1.5;
+
+  text-align: right;
+  &__warning {
+    background-color: $color-warning;
+    @extend .active-notification;
+  }
+  &__error {
+    background-color: $color-error;
+    @extend .active-notification;
+  }
+  &__success {
+    background-color: $color-success;
+    @extend .active-notification;
+  }
+}

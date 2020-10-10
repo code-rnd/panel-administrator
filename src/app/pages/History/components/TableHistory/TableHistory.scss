@@ -1,0 +1,26 @@
+.tableHistory {
+  &-row__header {
+    font-weight: bold;
+
+    &:hover {
+      background-color: white !important;
+    }
+  }
+
+  &-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 30px;
+  }
+
+  &-row {
+    height: 62px;
+    padding: 10px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+
+    &:hover {
+      background-color: #f2fff3;
+    }
+  }
+}

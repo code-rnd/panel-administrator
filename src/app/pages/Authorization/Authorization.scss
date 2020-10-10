@@ -1,0 +1,30 @@
+@import "src/app/shared/style/style.const";
+
+.page-authorization {
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .authorization-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .button {
+      margin: 0;
+      width: 100%;
+    }
+  }
+}

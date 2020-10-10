@@ -1,0 +1,12 @@
+@import "src/app/shared/style/style.const";
+
+.heading-page {
+  justify-content: space-between !important;
+
+  padding: 10px 0;
+  margin-bottom: 20px;
+
+  &-title {
+    font-weight: bold;
+  }
+}

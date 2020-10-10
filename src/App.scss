@@ -1,0 +1,20 @@
+body {
+  padding: 0;
+  margin: 0;
+
+  font-family: "Comfortaa", cursive;
+
+  #root {
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .page {
+      min-height: 100vh;
+      width: 100%;
+    }
+  }
+}

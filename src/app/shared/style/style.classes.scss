@@ -1,0 +1,31 @@
+.active-notification {
+  top: 0 !important;
+
+  opacity: 0.6;
+  transition: all 0.5s;
+}
+
+.animate {
+  opacity: 0.5;
+  pointer-events: none;
+
+  .spinner {
+    display: block;
+    height: 18px;
+    width: 18px;
+
+    margin-left: 10px;
+
+    background: url("../../../assets/loading/spinner-icon.svg") no-repeat center;
+    animation: animate-spinner 1s infinite;
+  }
+}
+
+@keyframes animate-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

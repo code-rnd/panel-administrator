@@ -1,0 +1,75 @@
+@import "src/app/shared/style/style.const";
+
+.treeview {
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+    transition: all 0.5s;
+
+    .menu {
+      opacity: 0;
+      transition: all 0.2s;
+    }
+
+    .item-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 10px;
+
+      box-sizing: border-box;
+    }
+
+    .item-icon {
+      height: 12px;
+      width: 12px;
+      background: url("../../../../../assets/treeview-icons/plus-icon.svg")
+        no-repeat center;
+
+      margin-right: 10px;
+      transition: all 0.5s;
+    }
+
+    &:hover {
+      background-color: #f2fff3;
+
+      .menu {
+        opacity: 1;
+        transition: all 0.2s;
+      }
+
+      transition: all 0.5s;
+    }
+  }
+
+  .item__open {
+    .item-icon {
+      transform: rotate(225deg);
+      transition: all 0.5s;
+    }
+  }
+
+  .item {
+    &__archive {
+      background-color: $color-warning;
+      &:hover {
+        background-color: $color-warning;
+      }
+      .item-title {
+        pointer-events: none;
+        opacity: 0.4;
+      }
+    }
+  }
+
+  .parentItem {
+    .item-title {
+      cursor: pointer;
+    }
+  }
+}
