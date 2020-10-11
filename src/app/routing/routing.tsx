@@ -35,7 +35,7 @@ export const Routing = memo(() => {
             })}
             <Route component={NotFound} />
           </Switch>
-          <Notification action={lastItem} />
+          <Notification action={lastItem} title={'история'} />
         </>
       );
     }
