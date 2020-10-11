@@ -6,7 +6,7 @@ import { NotificationModel } from "./model/Notification.model";
 
 import "./Notification.scss";
 
-export const Notification: FC<NotificationModel> = memo(({ action }) => {
+export const Notification: FC<NotificationModel> = memo(({ action, title }) => {
   const classes = useMemo(() => {
     return cn([
       "notification",
@@ -21,5 +21,5 @@ export const Notification: FC<NotificationModel> = memo(({ action }) => {
     ]);
   }, [action]);
 
-  return <div className={classes}>истоирия: {action.action}</div>;
+  return <div className={classes}>{title}: {action.action}</div>;
 });
