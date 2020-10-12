@@ -1,5 +1,5 @@
 export const urls = {
-  baseUrl: "./",
+  baseUrl: "/",
 };
 
 export enum DATE_FORMAT {
