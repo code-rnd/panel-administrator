@@ -9,3 +9,6 @@ output
 
 # Folders
 build
+
+# Yarn
+yarn.lock
