@@ -26,8 +26,8 @@
   <li>Клонирование <code>dev</code></li>
   <li>Зависимости<code>yarn</code></li>
   <li>Запуск<code>yarn start</code></li>
-  <li>Браузер `http://localhost:3000`</li>
-  <li>Дебаг `Redux DevTools` (расширение для браузера)</li>
+  <li>Браузер <code>http://localhost:3000</code></li>
+  <li>Дебаг <code>Redux DevTools</code> (расширение для браузера)</li>
  </ul>
  
  # Билд проекта
