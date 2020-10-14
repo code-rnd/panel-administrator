@@ -21,6 +21,11 @@ export const Modal: FC<ModalModel> = memo(
       backDrop && modalClosed();
     };
 
+    const handleSubmit = () => {
+      cbOk();
+      cbCancel();
+    };
+
     return (
       <div className="modal-backdrop" onClick={handlClick}>
         <div
@@ -30,7 +35,11 @@ export const Modal: FC<ModalModel> = memo(
           <div className="modal-window-title">{title}</div>
           <div className="modal-window-body">{children}</div>
           <div className="modal-window-footer">
-            <Button type={BUTTON_TYPE.SUCCESS} onClick={cbOk} title={okTitle} />
+            <Button
+              type={BUTTON_TYPE.SUCCESS}
+              onClick={handleSubmit}
+              title={okTitle}
+            />
             <Button
               type={BUTTON_TYPE.ERROR}
               onClick={cbCancel}

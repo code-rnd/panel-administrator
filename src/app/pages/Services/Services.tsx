@@ -1,76 +1,39 @@
-import React, { FC, memo, useCallback, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
+import React, { FC, memo, useState } from "react";
+import { useSelector } from "react-redux";
 
-import { BUTTON_TYPE } from "../../shared/components/Button/model/ButtonProps.model";
+import { EDIT_MODE } from "./components/Treeview/components/Menu/model/Menu.model";
 import { getServices } from "../../store/services/services.selectors";
+import { ACTION_HISTORY } from "../../store/history/history.model";
 import { HeadingPage } from "../../shared/components/HeadingPage";
-import { initialItem } from "../../shared/utils/service.util";
-import { getAuthorization } from "../../store/authorization";
-import { servicesActions } from "../../store/services";
-import { Modal } from "../../shared/components/Modal";
+import { ServicesModal } from "./components/ServicesModal";
 import { Body } from "../../shared/components/Body";
 import { Page } from "../../routing/routing.enums";
-import { EditForm } from "./components/EditForm";
 import { Treeview } from "./components/Treeview";
+import { BUTTON_TYPE } from "../../shared/components/Button/model/ButtonProps.model";
 
 export const Services: FC = memo(() => {
   const { services, isLoading } = useSelector(getServices);
-  const { user } = useSelector(getAuthorization);
-  const dispatch = useDispatch();
 
-  const [isAddShow, setAddShow] = useState(false);
-
-  const handleAdd = useCallback(() => {
-    setAddShow(true);
-  }, []);
-
-  const { handleSubmit, register, errors } = useForm({
-    defaultValues: {
-      ...initialItem,
-    },
-  });
-
-  const onSubmit = useCallback(
-    (values: any) => {
-      dispatch(
-        servicesActions.addFirstService(
-          services,
-          {
-            ...initialItem,
-            ...values,
-          },
-          user
-        )
-      );
-      setAddShow(false);
-    },
-    [dispatch, services, user]
-  );
+  const [isModalShow, setModalShow] = useState(false);
 
   return (
     <>
       <Body isLoading={isLoading}>
         <HeadingPage
           title={Page.SERVICES}
-          btAction={handleAdd}
-          btTitle={"Добавить услугу"}
+          btAction={() => setModalShow(true)}
+          btTitle="Добавить услугу"
           btType={BUTTON_TYPE.SUCCESS}
         />
         <Treeview items={services} />
       </Body>
 
-      {isAddShow && (
-        <Modal
-          modalClosed={() => setAddShow(false)}
-          title="Добавление нового элемента"
-          cbCancel={() => setAddShow(false)}
-          cancelTitle="Отмена"
-          cbOk={handleSubmit(onSubmit)}
-          okTitle="Добавить"
-        >
-          <EditForm register={register} errors={errors} />
-        </Modal>
+      {isModalShow && (
+        <ServicesModal
+          close={() => setModalShow(false)}
+          mode={EDIT_MODE.ADD}
+          title={ACTION_HISTORY.ADD}
+        />
       )}
     </>
   );

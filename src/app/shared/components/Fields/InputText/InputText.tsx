@@ -1,16 +1,11 @@
 import React, { FC, memo } from "react";
 import cn from "classnames";
 
+import { FieldTextModel } from "./model/FieldText.model";
+
 import "./InputText.scss";
 
-export const FieldText: FC<{
-  title: string;
-  name: string;
-  placeholder?: string;
-  disable?: boolean;
-  register: any;
-  errors?: any;
-}> = memo(
+export const FieldText: FC<FieldTextModel> = memo(
   ({ title, name, placeholder, disable, register, errors, ...props }) => {
     return (
       <div className={cn(["fieldText", { fieldText__disable: disable }])}>
