@@ -2,7 +2,7 @@
   "author": "https://github.com/code-rnd",
   "name": "panel-administrator",
   "version": "0.1.0",
-  "homepage": "./",
+  "homepage": "/panel-administrator/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
