@@ -22,7 +22,6 @@ export const prepareUpdateItem = (
       childrenItems: [],
       level: 1,
     });
-
     return result;
   }
 
@@ -71,6 +70,18 @@ export const prepareAddItem = (
   array: TreeviewPropsModel[],
   newItem: TreeviewPropsModel
 ) => {
+  if (!newItem?.id) {
+    const result = [...array];
+
+    result.push({
+      ...newItem,
+      id: 25 + getRandomArbitrary(100, 10000),
+      childrenItems: [],
+      level: 1,
+    });
+    return result;
+  }
+
   let result = [...array];
   for (let level = 0; level < result.length; level++) {
     let oldItem = result[level];
