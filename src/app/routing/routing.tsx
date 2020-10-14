@@ -33,9 +33,9 @@ export const Routing = memo(() => {
                 />
               );
             })}
-            <Route component={NotFound} />
+            <NotFound />
           </Switch>
-          <Notification action={lastItem} title={'история'} />
+          <Notification action={lastItem} title="история" />
         </>
       );
     }
@@ -43,7 +43,6 @@ export const Routing = memo(() => {
     return (
       <Switch>
         <Route component={Authorization} />
-        <Route component={NotFound} />
       </Switch>
     );
   }, [user, lastItem]);

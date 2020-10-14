@@ -1,4 +1,4 @@
-import { TreeviewPropsModel } from "../../pages/Services/components/Treeview/model/Treeview.model";
+import { TreeviewPropsModel } from "../pages/Services/components/Treeview/model/Treeview.model";
 
 export const TreeviewMock: TreeviewPropsModel[] = [
   {

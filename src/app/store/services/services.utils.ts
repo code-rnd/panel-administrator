@@ -11,41 +11,46 @@ import { TreeviewPropsModel } from "../../pages/Services/components/Treeview/mod
 
 export const prepareUpdateItem = (
   array: TreeviewPropsModel[],
-  item: TreeviewPropsModel,
-  upd: {
-    name?: string;
-    isArchive?: boolean;
-  } = {}
+  newItem: TreeviewPropsModel
 ) => {
-  let result = [...array];
-  for (let i = 0; i < result.length; i++) {
-    let xItem = result[i];
+  if (!newItem?.id) {
+    const result = [...array];
 
-    deleteItemByID(result, xItem, item.id, i, upd);
+    result.push({
+      ...newItem,
+      id: 25 + getRandomArbitrary(100, 10000),
+      childrenItems: [],
+      level: 1,
+    });
+
+    return result;
+  }
+
+  let result = [...array];
+  for (let level = 0; level < result.length; level++) {
+    let oldItem = result[level];
+
+    updateItemByID(result, oldItem, newItem, level);
   }
 
   return result;
 };
 
-export const deleteItemByID = (
+export const updateItemByID = (
   array: TreeviewPropsModel[],
-  item: TreeviewPropsModel,
-  id: number,
-  count: number,
-  upd: {
-    name?: string;
-    isArchive?: boolean;
-  } = {}
+  oldItem: TreeviewPropsModel,
+  newItem: TreeviewPropsModel,
+  level: number
 ) => {
-  if (item.id === id) {
-    array[count] = { ...array[count], ...upd };
+  if (oldItem.id === newItem.id) {
+    array[level] = { ...newItem };
     return;
   } else {
-    if (item.childrenItems) {
-      if (item.childrenItems.length) {
-        for (let i = 0; i < item.childrenItems.length; i++) {
-          let xItem = item.childrenItems[i];
-          deleteItemByID(item.childrenItems, xItem, id, i, upd);
+    if (oldItem.childrenItems) {
+      if (oldItem.childrenItems.length) {
+        for (let i = 0; i < oldItem.childrenItems.length; i++) {
+          let xItem = oldItem.childrenItems[i];
+          updateItemByID(oldItem.childrenItems, xItem, newItem, i);
         }
       }
     }
@@ -64,16 +69,13 @@ export const deleteItemByID = (
 
 export const prepareAddItem = (
   array: TreeviewPropsModel[],
-  item: TreeviewPropsModel,
-  upd: {
-    name: string;
-  }
+  newItem: TreeviewPropsModel
 ) => {
   let result = [...array];
-  for (let i = 0; i < result.length; i++) {
-    let xItem = result[i];
+  for (let level = 0; level < result.length; level++) {
+    let oldItem = result[level];
 
-    addItemByID(result, xItem, item.id, i, upd);
+    addItemByID(result, oldItem, newItem, level);
   }
 
   return result;
@@ -81,36 +83,31 @@ export const prepareAddItem = (
 
 export const addItemByID = (
   array: TreeviewPropsModel[],
-  item: TreeviewPropsModel,
-  id: number,
-  count: number,
-  upd: {
-    name: string;
-  }
+  oldItem: TreeviewPropsModel,
+  newItem: TreeviewPropsModel,
+  level: number
 ) => {
-  if (item.id === id) {
-    const oldChildren = array[count]?.childrenItems;
+  if (oldItem.id === newItem.id) {
+    const oldChildren = array[level]?.childrenItems;
 
     if (oldChildren) {
-      array[count]?.childrenItems?.push({
-        id: id + getRandomArbitrary(100, 10000),
+      array[level]?.childrenItems?.push({
+        ...newItem,
+        id: oldItem.id + getRandomArbitrary(100, 10000),
         childrenItems: [],
-        isArchive: false,
-        level: item.level + 1,
-        ...upd,
+        level: oldItem.level + 1,
       });
     }
 
     if (!oldChildren) {
-      array[count] = {
-        ...array[count],
+      array[level] = {
+        ...array[level],
         childrenItems: [
           {
-            id: id + getRandomArbitrary(100, 10000),
+            ...newItem,
+            id: oldItem.id + getRandomArbitrary(100, 10000),
             childrenItems: [],
-            isArchive: false,
-            level: item.level + 1,
-            ...upd,
+            level: oldItem.level + 1,
           },
         ],
       };
@@ -118,12 +115,12 @@ export const addItemByID = (
 
     return;
   }
-  if (item.id !== id) {
-    if (item.childrenItems) {
-      if (item.childrenItems.length) {
-        for (let i = 0; i < item.childrenItems.length; i++) {
-          let xItem = item.childrenItems[i];
-          addItemByID(item.childrenItems, xItem, id, i, upd);
+  if (oldItem.id !== newItem.id) {
+    if (oldItem.childrenItems) {
+      if (oldItem.childrenItems.length) {
+        for (let i = 0; i < oldItem.childrenItems.length; i++) {
+          let xItem = oldItem.childrenItems[i];
+          addItemByID(oldItem.childrenItems, xItem, newItem, i);
         }
       }
     }
@@ -133,25 +130,6 @@ export const addItemByID = (
 /**
  *
  * Add end
- */
-
-/**
- *
- * Add first item func
- */
-export const prepareAddFirstItem = (
-  array: TreeviewPropsModel[],
-  item: TreeviewPropsModel
-) => {
-  const result = [...array];
-
-  result.push(item);
-
-  return result;
-};
-/**
- *
- * Add first item func end
  */
 
 /**
