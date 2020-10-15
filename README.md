@@ -23,7 +23,7 @@
 
 # Развертывание проекта
 <ul>
-  <li>Клонирование <code>dev</code></li>
+  <li>Клонирование <code>master</code></li>
   <li>Зависимости<code>yarn</code></li>
   <li>Запуск<code>yarn start</code></li>
   <li>Браузер <code>http://localhost:3000</code></li>
